@@ -1,0 +1,89 @@
+{extend name="../application/common/view/template/base.html" /}
+{block name="button"}{/block}
+{block name="main"}
+<div class="col-sm-12">
+    <aside class="profile-info col-lg-10">
+        <section class="panel">
+            <div class="panel-body bio-graph-info">
+                <h1> 添加</h1>
+                <form class="form-horizontal" role="form" method="post" id="form_create">
+                    {:token()}
+                    <div class="form-group">
+                        <label for="name" class="col-lg-2 control-label">菜单名称</label>
+                        <div class="col-lg-8">
+                            <input id="name" type="text" class="form-control" placeholder="请填写菜单名称" value=""
+                                   name="name">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="parent_id" class="col-lg-2 control-label">父菜单ID</label>
+                        <div class="col-lg-8">
+                            <input id="parent_id" type="number" class="form-control" placeholder="请填写父菜单ID" value=""
+                                   name="parent_id">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="grade" class="col-lg-2 control-label">菜单等级</label>
+                        <div class="col-lg-8">
+                            <input id="grade" type="number" class="form-control" value="" name="grade"
+                                   placeholder="请填写菜单等级">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="sequence" class="col-lg-2 control-label">排序</label>
+                        <div class="col-lg-8">
+                            <input id="sequence" type="number" class="form-control" value="" name="sequence"
+                                   placeholder="请填写排序">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="url" class="col-lg-2 control-label">链接</label>
+                        <div class="col-lg-8">
+                            <input id="url" type="text" class="form-control" value="" name="url"
+                                   placeholder="请填写链接">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="controller" class="col-lg-2 control-label">控制器</label>
+                        <div class="col-lg-8">
+                            <input id="controller" type="text" class="form-control" value="" name="controller"
+                                   placeholder="请填写控制器">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="action" class="col-lg-2 control-label">方法</label>
+                        <div class="col-lg-8">
+                            <input id="action" type="text" class="form-control" value="" name="action"
+                                   placeholder="请填写方法">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="state" class="col-lg-2 control-label">状态</label>
+                        <div class="col-lg-8">
+                            <select name="state" id="state" class="selectpicker show-tick form-control">
+                                <option value="0">正常</option>
+                                <option value="1">禁用</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-lg-offset-2 col-lg-10">
+                            <input type="button" value="提交"
+                                   onclick="save(this.form, '{:url(\'save\')}', '{:url(\'index\')}')"
+                                   class="btn btn-success">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </aside>
+</div>
+{/block}

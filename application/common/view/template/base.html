@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Mosaddek">
+    <meta name="keyword" content="FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    <title>{block name="title"}后台管理{/block}</title>
+    <!-- Bootstrap core CSS -->
+    <link href="__COMMON__/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__ADMIN__/public/css/bootstrap-reset.css" rel="stylesheet">
+    <!--external css-->
+    <link href="__COMMON__/assets/font-awesome/css/font-awesome.css" rel="stylesheet"/>
+    <link href="__COMMON__/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css"
+          media="screen"/>
+    <link rel="stylesheet" href="__COMMON__/assets/owl-carousel/css/owl.carousel.css" type="text/css">
+    <!-- Custom styles for this template -->
+    <link href="__ADMIN__/public/css/style.css" rel="stylesheet">
+    <link href="__ADMIN__/public/css/style-responsive.css" rel="stylesheet"/>
+    <link href="__ADMIN__/public/css/public.css" rel="stylesheet"/>
+    <script src="__COMMON__/jquery/jquery.js"></script>
+    <script src="__COMMON__/layer/layer.js"></script>
+    <!-- 时间选择器 -->
+    <link rel="stylesheet" type="text/css"
+          href="__COMMON__/assets/jquery-datetimepicker/css/jquery.datetimepicker.css"/>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
+    <!--[if lt IE 9]>
+    <script src="__COMMON__/assets/html5shiv.js"></script>
+    <script src="__COMMON__/assets/respond.min.js"></script>
+    <![endif]-->
+</head>
+<section id="container" class="">
+    <!--header start-->
+    {block name="header"}
+    {include file="../application/common/view/public/header.html" /}
+    {/block}
+    <!--header end-->
+    <!--sidebar start-->
+    {block name="menu"}
+    {include file="../application/common/view/public/menu.html" /}
+    {/block}
+    <!--sidebar end-->
+    <!--main content start-->
+    <section id="main-content">
+        <section class="wrapper">
+            <!--state overview start-->
+            {block name="state_overview"}{/block}
+            <!--state overview end-->
+            <!--button start-->
+            {block name="button"} {/block}
+            <!--button end-->
+            <br>
+            <br>
+            <div class="row">
+                {block name="main"}{/block}
+            </div>
+        </section>
+    </section>
+    <!--main content end-->
+</section>
+{block name="footer"}
+{include file="../application/common/view/public/footer.html" /}
+{/block}
+<body>
+</body>
+</html>

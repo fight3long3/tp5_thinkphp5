@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>欢迎登录</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link href="__COMMON__/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="__COMMON__/slideunlock/slide-unlock.css" rel="stylesheet" type="text/css"/>
+    <link href="__COMMON__/user/css/base.css" rel="stylesheet" type="text/css"/>
+    <link href="__ADMIN__/user/css/login.css" rel="stylesheet" type="text/css"/>
+    <link href="__ADMIN__/user/css/drag.css" rel="stylesheet" type="text/css"/>
+    <style>
+        .gt_cut_fullbg_slice {
+            float: left;
+            width: 13px;
+            height: 58px;
+            margin: 0 !important;
+            border: 0;
+            padding: 0 !important;
+            background-image: url("{$pg_bg}");
+        }
+        .xy_img_bord{
+            -webkit-box-shadow:0 0 15px #0CC;
+            -moz-box-shadow:0 0 15px #0CC;
+            box-shadow:0 0 15px #0CC;
+        }
+        #xy_img{
+            background-image: url({$ico_pic['url']});z-index: 999;width: {$ico_pic['w']}px;height:{$ico_pic['h']}px;position: relative;
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <form class="form-horizontal" role="form" id="form-login">
+                    <h1 class="title">系统管理中心</h1>
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label">账号</label>
+                        <div class="col-md-3">
+                            <input class="form-control" id="username" name="username" type="text" value="" title="请输入账号"
+                                   placeholder="账号">
+                        </div>
+                        <label class="col-sm-1">···</label>
+                        <div class="col-md-2 header">
+                            <img src="__ADMIN__/user/images/admin.png" alt="头像">
+                        </div>
+                        <label class="col-sm-1">···</label>
+                        <label for="password" class="col-md-1 control-label">密码</label>
+                        <div class="col-md-3">
+                            <input class="form-control" id="password" name="password" type="password" title="请输入密码"
+                                   placeholder="密码">
+                        </div>
+                    </div>
+                    <div class="row put_val">
+                        <div style="width: 260px;height: 116px;margin: 0 auto" id="Verification">
+                            {foreach $left_pic as $vo}
+                                {php}
+                                    $left_symbol = $vo[0] == 0 ?'':'-';
+                                    $right_symbol = $vo[1] == 0 ?'':'-';
+                                {/php}
+                                <div class="gt_cut_fullbg_slice"
+                                     style="background-position:{$left_symbol}{$vo[0]}px {$right_symbol}{$vo[1]}px;"></div>
+                            {/foreach}
+                            {foreach $right_pic as $vo}
+                                {php}
+                                    $left_symbol = $vo[0] == 0 ?'':'-';
+                                    $right_symbol = $vo[1] == 0 ?'':'-';
+                                {/php}
+                                <div class="gt_cut_fullbg_slice"
+                                     style="background-position:{$left_symbol}{$vo[0]}px  {$right_symbol}{$vo[1]}px;"></div>
+                            {/foreach}
+
+                            <div style="top: {php} echo($y_point){/php}px;left: 0px;display: none;border: 1px solid white"
+                                 id="xy_img" class="xy_img_bord"></div>
+                        </div>
+                        <div id="drag" style="width: 260px;margin: 0 auto"></div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+</div>
+<script src="__COMMON__/jquery/jquery.js" type="text/javascript"></script>
+<script src="__COMMON__/user/js/md5.js" type="text/javascript"></script>
+<script src="__COMMON__/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="__COMMON__/layer/layer.js"></script>
+<script src="__COMMON__/slideunlock/jquery.slideunlock.js"></script>
+<script src="__ADMIN__/user/js/login.js"></script>
+<script src="__ADMIN__/user/js/drag.js" type="text/javascript"></script>
+<script>
+    $('#drag').drag();
+</script>
+</body>
+</html>

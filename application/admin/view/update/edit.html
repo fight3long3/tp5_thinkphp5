@@ -1,0 +1,66 @@
+{extend name="../application/common/view/template/base.html" /}
+{block name="title"}{$title}{/block}
+{block name="menu"}
+{__block__}
+{/block}
+{block name="left"}
+{__block__}
+{/block}
+{block name="state_overview"}{/block}
+{block name="button"}{/block}
+{block name="main"}
+<div class="col-sm-12">
+    <aside class="profile-info col-lg-10">
+        <section class="panel">
+            <div class="panel-body bio-graph-info">
+                <h1> 编辑</h1>
+                <form class="form-horizontal" role="form" method="post"
+                      id="form_edit">
+                    {:token()}
+                    <div class="form-group">
+                        <label for="android_version" class="col-lg-2 control-label">android版本</label>
+                        <div class="col-lg-8">
+                            <input id="android_version" type="text" class="form-control" value="{$list[0]['version']}"
+                                   name="android_version"
+                                   placeholder="请填写版本">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="android_download_link" class="col-lg-2 control-label">android下载地址</label>
+                        <div class="col-lg-8">
+                            <input id="android_download_link" type="text" class="form-control"
+                                   value="{$list[0]['download_link']}" name="android_download_link"
+                                   placeholder="请填写下载地址">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="ios_version" class="col-lg-2 control-label">ios版本</label>
+                        <div class="col-lg-8">
+                            <input id="ios_version" type="text" class="form-control" value="{$list[1]['version']}"
+                                   name="ios_version"
+                                   placeholder="请填写版本">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="ios_download_link" class="col-lg-2 control-label">ios下载地址</label>
+                        <div class="col-lg-8">
+                            <input id="ios_download_link" type="text" class="form-control" value="{$list[1]['download_link']}"
+                                   name="ios_download_link"
+                                   placeholder="请填写下载地址">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-offset-2 col-lg-10">
+                            <input type="button" value="保存"
+                                   onclick="update(this.form, '{:url(\'update\')}', '{:url(\'index\')}')"
+                                   class="btn btn-success">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </aside>
+</div>
+{/block}
+
+

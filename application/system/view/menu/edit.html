@@ -1,0 +1,112 @@
+{extend name="../application/common/view/template/base.html" /}
+{block name="button"}{/block}
+{block name="main"}
+<div class="col-sm-12">
+    <aside class="profile-info col-lg-10">
+        <section class="panel">
+            <div class="panel-body bio-graph-info">
+                <h1> 编辑</h1>
+                <form action="" class="form-horizontal" role="form" method="post"
+                      id="form_edit">
+                    {:token()}
+                    <div class="form-group">
+                        <label for="name" class="col-lg-2 control-label">管理员名称</label>
+                        <div class="col-lg-8">
+                            <input id="name" type="text" class="form-control" value="{$data.name}" name="name"
+                                   placeholder="请填写管理员名称">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="parent_id" class="col-lg-2 control-label">父菜单</label>
+                        <div class="col-lg-8">
+                            <select name="parent_id" id="parent_id" class="selectpicker show-tick form-control">
+                                {foreach $menus as $menu}
+                                    <option value="{$menu.id}" {$data.parent_id == $menu.id ? 'selected' : ''}>
+                                    {$menu.name}
+                                    </option>
+                                    {foreach $menu.child_menus as $child_menu}
+                                        <option value="{$child_menu.id}" {$data.parent_id == $child_menu.id ? 'selected' : ''}>
+                                        --{$child_menu.name}
+                                        </option>
+                                    {/foreach}
+                                {/foreach}
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="grade" class="col-lg-2 control-label">菜单等级</label>
+                        <div class="col-lg-8">
+                            <input id="grade" type="text" class="form-control" value="{$data.grade}" name="grade"
+                                   placeholder="请填写菜单等级">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="sequence" class="col-lg-2 control-label">排序</label>
+                        <div class="col-lg-8">
+                            <input id="sequence" type="text" class="form-control" value="{$data.sequence}" name="sequence"
+                                   placeholder="请填写排序">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="url" class="col-lg-2 control-label">链接</label>
+                        <div class="col-lg-8">
+                            <input id="url" type="text" class="form-control" value="{$data.url}" name="url"
+                                   placeholder="请填写链接">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="controller" class="col-lg-2 control-label">控制器</label>
+                        <div class="col-lg-8">
+                            <input id="controller" type="text" class="form-control" value="{$data.controller}" name="controller"
+                                   placeholder="请填写控制器">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="action" class="col-lg-2 control-label">方法</label>
+                        <div class="col-lg-8">
+                            <input id="action" type="text" class="form-control" value="{$data.action}" name="action"
+                                   placeholder="请填写方法">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="state" class="col-lg-2 control-label">状态</label>
+                        <div class="col-lg-8">
+                            <select name="state" id="state" class="selectpicker show-tick form-control">
+                                <option value="0">正常</option>
+                                <option value="1" {$data.state ? 'selected' : ''}>禁用</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">创建时间</label>
+                        <div class="col-lg-8">
+                            <span>
+                                {if condition="$data.create_time"}
+                                    {$data.create_time|date="Y-m-d H:i",###}
+                                {/if}
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-lg-offset-2 col-lg-10">
+                            <input type="button" value="保存"
+                                   onclick="update(this.form, '{:url(\'update\')}/{$data.id}', '{:url(\'index\')}/{$data.id}')"
+                                   class="btn btn-success">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </aside>
+</div>
+{/block}

@@ -1,0 +1,109 @@
+{extend name="../application/common/view/template/base.html" /}
+{block name="state_overview"}
+<div class="row" style="margin: 10px;">
+    <h2>今日新增会员：{$member_count_today} &nbsp;&nbsp;&nbsp;&nbsp;总会员：{$member_count}</h2>
+</div>
+<div class="row state-overview">
+    <div class="col-lg-2 col-sm-2">
+        <section class="panel">
+            <div class="symbol red color_white">
+                <h4 style="color: #FFF">生成<br>激活码</h4>
+            </div>
+            <div class="value">
+                <h1>{$code_count}</h1>
+            </div>
+        </section>
+    </div>
+    <div class="col-lg-2 col-sm-2">
+        <section class="panel">
+            <div class="symbol gray color_white">
+                <h4 style="color: #FFF">使用<br>激活码</h4>
+            </div>
+            <div class="value">
+                <h1>{$code_count_use}</h1>
+            </div>
+        </section>
+    </div>
+    <div class="col-lg-2 col-sm-2">
+        <section class="panel">
+            <div class="symbol blue color_white">
+                <h4 style="color: #FFF">今日生成<br>激活码</h4>
+            </div>
+            <div class="value">
+                <h1>{$code_count_today}</h1>
+            </div>
+        </section>
+    </div>
+    <div class="col-lg-2 col-sm-2">
+        <section class="panel">
+            <div class="symbol terques color_white">
+                <h4 style="color: #FFF">今日使用<br>激活码</h4>
+            </div>
+            <div class="value">
+                <h1>{$code_count_use_today}</h1>
+            </div>
+        </section>
+    </div>
+    <div class="col-lg-2 col-sm-2">
+        <section class="panel">
+            <div class="symbol red color_white">
+                <h4 style="color: #FFF">今日<br>充值</h4>
+            </div>
+            <div class="value">
+                <h1>0</h1>
+            </div>
+        </section>
+    </div>
+    <div class="col-lg-2 col-sm-2">
+        <section class="panel">
+            <div class="symbol gray color_white">
+                <h4 style="color: #FFF">总<br>充值</h4>
+            </div>
+            <div class="value">
+                <h1>0</h1>
+            </div>
+        </section>
+    </div>
+</div>
+{/block}
+{block name="button"}
+{/block}
+{block name="main"}
+<div class="col-lg-12">
+    <section class="panel">
+        <div id="line" style="width: 100%;height:400px;"></div>
+        <script src="__COMMON__/chart/echarts.js"></script>
+        <script src=""></script>
+        <!-- 引入 vintage 主题 -->
+        <script src="__COMMON__/chart/vintage.js"></script>
+        <script>
+            // 第二个参数可以指定前面引入的主题
+            var line = echarts.init(document.getElementById('line'), 'vintage');
+            // 指定图表的配置项和数据
+            var line_option = {
+                title: {
+                    text: '激活码统计'
+                },
+                tooltip: {},
+                legend: {
+                    data:['生成数量']
+                },
+                xAxis: {
+                    data: [
+                        '{foreach $day_group_results as day}{$day.day}{/foreach}'
+                    ]
+                },
+                yAxis: {},
+                series: [{
+                    name: '生成数量',
+                    type: 'line',
+                    data: [
+                        '{foreach $day_group_results as day}{$day.count}{/foreach}'
+                    ]
+                }]
+            };
+            line.setOption(line_option);
+        </script>
+    </section>
+</div>
+{/block}

@@ -1,0 +1,31 @@
+<aside>
+    <div id="sidebar" class="nav-collapse " tabindex="5000"
+         style="overflow: hidden; outline: none; margin-left: 0;">
+        <!-- sidebar menu start-->
+        <ul class="sidebar-menu" style="display: block;">
+            {foreach $menus as $menu}
+            <li class="{if $module == $menu.module}active{else/}sub-menu{/if}">
+                <a href="javascript:void(0);" class="">
+                    <i class="icon-btc"></i>
+                    <span>{$menu.name}</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub">
+                    {foreach $menu['child_menus'] as $child_menu}
+                    <li class="{if $module == $menu.module && $controller == $child_menu.controller && $action == $child_menu.action}active{else /}sub-menu{/if}">
+                        <a href="{$menu.module.'/'.$child_menu.controller.'/'.$child_menu.action|url}">{$child_menu.name}</a>
+                    </li>
+                    {/foreach}
+                </ul>
+            </li>
+            {/foreach}
+            <li>
+                <a class="" href="{:Url('admin/User/logout')}">
+                    <i class="icon-signout"></i>
+                    <span>退出</span>
+                </a>
+            </li>
+        </ul>
+        <!-- sidebar menu end-->
+    </div>
+</aside>

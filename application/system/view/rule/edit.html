@@ -1,0 +1,81 @@
+{extend name="../application/common/view/template/base.html" /}
+{block name="button"}{/block}
+{block name="main"}
+<div class="col-sm-12">
+    <aside class="profile-info col-lg-10">
+        <section class="panel">
+            <div class="panel-body bio-graph-info">
+                <h1> 编辑</h1>
+                <form action="" class="form-horizontal" role="form" method="post"
+                      id="form_edit">
+                    {:token()}
+                    <div class="form-group">
+                        <label for="name" class="col-lg-2 control-label">规则名称</label>
+                        <div class="col-lg-8">
+                            <input id="name" type="text" class="form-control" value="{$data.name}" name="name"
+                                   placeholder="请填写规则名称">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">规则</label>
+                        <div class="col-lg-8">
+                            {foreach $all_menus as $menu}
+                            <div class="foreach-top">
+                                <div class="foreach-inner">
+                                <input class="chk" name="menu_ids[]" id="menu_ids_{$menu.id}" type="checkbox" value="{$menu.id}"
+                                       {foreach $can_do_menus as $can_do_menu}{$can_do_menu == $menu.id ? 'checked' : ''}{/foreach}>
+                                <label for="menu_ids_{$menu.id}"></label><span>{$menu.name}</span>
+                            </div>
+                                    {foreach $menu.child_menus as $child_menu}
+                                        &nbsp;<input class="chk" name="menu_ids[]" id="menu_ids_{$child_menu.id}" type="checkbox" value="{$child_menu.id}"
+                                               {foreach $can_do_menus as $can_do_menu}{$can_do_menu == $child_menu.id ? 'checked' : ''}{/foreach}>
+                                        <label for="menu_ids_{$child_menu.id}"></label><span>{$child_menu.name}</span>
+                                    {/foreach}
+                            </div>
+                            {/foreach}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description" class="col-lg-2 control-label">规则描述</label>
+                        <div class="col-lg-8">
+                            <input id="description" type="text" class="form-control" value="{$data.description}" name="description"
+                                   placeholder="请填写规则描述">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="state" class="col-lg-2 control-label">状态</label>
+                        <div class="col-lg-8">
+                            <select name="state" id="state" class="selectpicker show-tick form-control">
+                                <option value="0">正常</option>
+                                <option value="1" {$data.state ? 'selected' : ''}>禁用</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">创建时间</label>
+                        <div class="col-lg-8">
+                            <span>
+                                {if condition="$data.create_time"}
+                                    {$data.create_time|date="Y-m-d H:i",###}
+                                {/if}
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-lg-offset-2 col-lg-10">
+                            <input type="button" value="保存"
+                                   onclick="update(this.form, '{:url(\'update\')}/{$data.id}', '{:url(\'index\')}/{$data.id}')"
+                                   class="btn btn-success">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </aside>
+</div>
+{/block}

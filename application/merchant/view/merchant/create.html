@@ -1,0 +1,111 @@
+{extend name="../application/common/view/template/base.html" /}
+{block name="title"}{$title}{/block}
+{block name="main"}
+<div class="col-sm-12">
+    <aside class="profile-info col-lg-10">
+        <section class="panel">
+            <div class="panel-body bio-graph-info">
+                <h1> 添加</h1>
+                <form class="form-horizontal" role="form" method="post" id="form_create">
+                    {:token()}
+                    <div class="form-group">
+                        <label for="name" class="col-lg-2 control-label">用户账号</label>
+                        <div class="col-lg-8">
+                            <input id="name" type="text" class="form-control" placeholder="请填写用户账号" value=""
+                                   name="name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="col-lg-2 control-label">密码</label>
+                        <div class="col-lg-8">
+                            <input id="password" type="password" class="form-control" placeholder="请填写密码" value=""
+                                   name="password">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="user_money" class="col-lg-2 control-label">账户余额</label>
+                        <div class="col-lg-8">
+                            <input id="user_money" type="text" class="form-control" placeholder="请填写账户余额" value=""
+                                   name="user_money">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="rate" class="col-lg-2 control-label">提现费率</label>
+                        <div class="col-lg-8">
+                            <input id="rate" type="text" class="form-control" placeholder="请填写提现费率" value="0.02"
+                                   name="rate">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="user_tel" class="col-lg-2 control-label">用户手机</label>
+                        <div class="col-lg-8">
+                            <input id="user_tel" type="text" class="form-control" placeholder="请填写用户手机" value=""
+                                   name="user_tel">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="user_name" class="col-lg-2 control-label">用户姓名</label>
+                        <div class="col-lg-8">
+                            <input id="user_name" type="text" class="form-control" placeholder="请填写用户姓名" value=""
+                                   name="user_name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="key" class="col-lg-2 control-label">用户key</label>
+                        <div class="col-lg-8">
+                            <input id="key" type="text" class="form-control" placeholder="请填写用户key" value=""
+                                   name="key">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="security_remind" class="col-lg-2 control-label">安全金额提醒</label>
+                        <div class="col-lg-8">
+                            <input id="security_remind" type="text" class="form-control" placeholder="请填写安全金额提醒" value=""
+                                   name="security_remind">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="audit_switch" class="col-lg-2 control-label">大额审核开关</label>
+                        <div class="col-lg-8">
+                            <select name="audit_switch" id="audit_switch" class="selectpicker show-tick form-control">
+                                <option value="0">开</option>
+                                <option value="1">关</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="white_list" class="col-lg-2 control-label">白名单</label>
+                        <div class="col-lg-8">
+                            <input id="white_list" type="text" class="form-control" placeholder="请填写白名单" value=""
+                                   name="white_list">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="times" class="col-lg-2 control-label">每人每天最多提现次数（不包含1元 0为不限制）</label>
+                        <div class="col-lg-8">
+                            <input id="times" type="text" class="form-control" placeholder="每人每天最多提现次数（不包含1元 0为不限制）" value=""
+                                   name="times">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="state" class="col-lg-2 control-label">状态</label>
+                        <div class="col-lg-8">
+                            <select name="state" id="state" class="selectpicker show-tick form-control">
+                                <option value="0">正常</option>
+                                <option value="1">禁用</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-offset-2 col-lg-10">
+                            <input type="button" value="提交"
+                                   onclick="save(this.form, '{:url(\'save\')}', '{:url(\'index\')}')"
+                                   class="btn btn-success">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </aside>
+</div>
+{/block}

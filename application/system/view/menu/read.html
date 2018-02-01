@@ -1,0 +1,83 @@
+{extend name="../application/common/view/template/base.html" /}
+{block name="button"}
+{/block}
+{block name="main"}
+<div class="col-sm-12">
+    <aside class="profile-info col-lg-10">
+        <section class="panel">
+            <div class="panel-body bio-graph-info">
+                <h1> 查看</h1>
+                <form class="form-horizontal" role="form" method="post" id="form_create">
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">菜单名称</label>
+                        <div class="col-lg-8">
+                            <span>{$data.name}</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-2 cont  l-label">父菜单ID</label>
+                        <div class="col-lg-8">
+                            <span>{$data.parent_id}</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">菜单等级</label>
+                        <div class="col-lg-8">
+                            <span>{$data.grade}</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">排序</label>
+                        <div class="col-lg-8">
+                            <span>{$data.sequence}</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">链接</label>
+                        <div class="col-lg-8">
+                            <span>{$data.url}</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">控制器</label>
+                        <div class="col-lg-8">
+                            <span>{$data.controller}</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">方法</label>
+                        <div class="col-lg-8">
+                            <span>{$data.action}</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">创建时间</label>
+                        <div class="col-lg-8">
+                            <span>
+                                {if condition="$data.create_time"}
+                                    {$data.create_time|date="Y-m-d H:i",###}
+                                {/if}
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">状态</label>
+                        <div class="col-lg-8">
+                            <span>{$data.state? '禁用' : '正常'}</span>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </section>
+    </aside>
+</div>
+{/block}

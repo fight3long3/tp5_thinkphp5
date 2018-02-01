@@ -1,0 +1,56 @@
+{extend name="../application/common/view/template/base.html" /}
+{block name="button"}{/block}
+{block name="main"}
+<div class="col-sm-12">
+    <aside class="profile-info col-lg-10">
+        <section class="panel">
+            <div class="panel-body bio-graph-info">
+                <h1> 添加</h1>
+                <form class="form-horizontal" role="form" method="post" id="form_create">
+                    {:token()}
+                    <div class="form-group">
+                        <label for="name" class="col-lg-2 control-label">管理员名称</label>
+                        <div class="col-lg-8">
+                            <input id="name" type="text" class="form-control" placeholder="请填写管理员名称" value=""
+                                   name="name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="col-lg-2 control-label">密码</label>
+                        <div class="col-lg-8">
+                            <input id="password" type="password" class="form-control" placeholder="请填写密码" value=""
+                                   name="password">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="role_id" class="col-lg-2 control-label">角色</label>
+                        <div class="col-lg-8">
+                            <select name="role_id" id="role_id" class="selectpicker show-tick form-control">
+                                {foreach $roles as $role}
+                                <option value="{$role.id}">{$role.name}</option>
+                                {/foreach}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="state" class="col-lg-2 control-label">状态</label>
+                        <div class="col-lg-8">
+                            <select name="state" id="state" class="selectpicker show-tick form-control">
+                                <option value="0">正常</option>
+                                <option value="1">禁用</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-offset-2 col-lg-10">
+                            <input type="button" value="提交"
+                                   onclick="save(this.form, '{:url(\'save\')}', '{:url(\'index\')}')"
+                                   class="btn btn-success">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </aside>
+</div>
+{/block}
