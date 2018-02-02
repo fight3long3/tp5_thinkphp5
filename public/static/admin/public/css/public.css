@@ -1,0 +1,52 @@
+.copyright {
+    text-align: center;
+}
+
+.chk {
+    display: none;
+}
+
+.chk + label {
+    background-color: #FFF;
+    border: 1px solid #C1CACA;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0 -15px 10px -12px rgba(0, 0, 0, 0.05);
+    padding: 9px;
+    margin-bottom: -5px;
+    border-radius: 5px;
+    display: inline-block;
+    position: relative;
+}
+
+.chk + label:active {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.chk:checked + label {
+    background-color: #ECF2F7;
+    border: 1px solid #92A1AC;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0 -15px 10px -12px rgba(0, 0, 0, 0.05), inset 15px 10px -12px rgba(255, 255, 255, 0.1);
+    color: #243441;
+}
+
+.chk:checked + label:after {
+    content: '\2714';
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #758794;
+    width: 100%;
+    text-align: center;
+    vertical-align: text-top;
+}
+
+.form-horizontal .form-group span {
+    line-height: 3em;
+}
+
+.form-horizontal .form-group .foreach-top {
+    padding: 5px
+}
+
+.form-horizontal .form-group .foreach-inner {
+    background: #efefef
+}

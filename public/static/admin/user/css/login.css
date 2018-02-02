@@ -1,0 +1,57 @@
+html, body {
+    background: url("../images/3.jpg");
+}
+
+.main {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    padding-top: 8%;
+}
+
+h1.title {
+    color: #FFF;
+    padding: 30px;
+}
+
+.form-group {
+    margin: 8%;
+}
+
+.form-group label {
+    color: #FFF;
+    padding: 7px 10px;
+}
+
+.form-group label.control-label {
+    border-right: dotted 1px #FFF;
+}
+
+.btn-warning {
+    padding: 8px 16px;
+    margin: auto;
+    width: 288px;
+}
+
+#slide-unlock {
+    width: 100%;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    text-align: left;
+}
+#slider {
+    margin: 8% auto;
+}
+
+@media (max-width: 768px) {
+    .form-group label {
+        display: none;
+    }
+    .header {
+        display: none;
+    }
+    input {
+        margin: 8% 0;
+    }
+}
