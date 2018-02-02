@@ -75,7 +75,7 @@ class Rule extends Base
         $data = [
             'name' => $name,// 菜单名称
             'rule' => json_encode($rule),// 菜单名称
-            'update_time' => time(), // 创建时间
+            'create_time' => time(), // 创建时间
             'state' => $state, // 状态
         ];
         $result = $this->model->insert($data);
