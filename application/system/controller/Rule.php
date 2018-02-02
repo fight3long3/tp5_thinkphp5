@@ -40,10 +40,16 @@ class Rule extends Base
      * 显示创建资源表单页
      *
      * @return \think\Response
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
      */
     public function create()
     {
+        $menu_model = new \app\system\model\Menu();
+        $all_menus = $menu_model->getAllMenus();
         $this->assign('title', '添加管理员');
+        $this->assign('all_menus', $all_menus);
         return $this->fetch();
     }
 
@@ -55,35 +61,26 @@ class Rule extends Base
     public function save(Request $request)
     {
         $name = $request->post('name');
-        $parent_id = $request->post('parent_id', 0);
-        $grade = $request->post('grade');
-        $sequence = $request->post('sequence');
-        $url = $request->post('url');
-        $controller = $request->post('controller');
-        $action = $request->post('action');
+        $menu_ids = $_POST['menu_ids'];
         $state = $request->post('state');
         if (!$name) {
             return json_return(101);
         }
-
+        $rule = [
+            'name' => 'menu',
+            'where' => [
+                'id' => ['in', $menu_ids]
+            ]
+        ];
         $data = [
             'name' => $name,// 菜单名称
-            'parent_id' => $parent_id,// 父菜单ID
-            'grade' => $grade, // 菜单等级
-            'sequence' => $sequence, // 排序
-            'url' => $url, // 链接
-            'controller' => $controller, // 控制器
-            'action' => $action, // 方法
-            'create_time' => time(), // 创建时间
+            'rule' => json_encode($rule),// 菜单名称
+            'update_time' => time(), // 创建时间
             'state' => $state, // 状态
         ];
-
         $result = $this->model->insert($data);
         if ($result) {
-            $last_id = $this->model->getLastInsID();
-            if ($last_id) {
-                return json_return(0, $last_id);
-            }
+            return json_return(0);
         }
         return json_return(100);
     }
