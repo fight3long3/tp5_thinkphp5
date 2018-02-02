@@ -71,11 +71,11 @@
                     </a>
                     {if condition="!$item.state"}
                     <a href="javascript:void(0);" onclick="update_this('{:url(\'setState\')}/', '{$item.id}', 1)">
-                        <button class="btn btn-warning btn-xs"><i class="icon-pencil"> 禁用</i></button>
+                        <button class="btn btn-warning btn-xs"><i class="icon-pencil"> 隐藏</i></button>
                     </a>
                     {else /}
                     <a href="javascript:void(0);" onclick="update_this('{:url(\'setState\')}/', '{$item.id}', 0)">
-                        <button class="btn btn-info btn-xs"><i class="icon-pencil"> 启用</i></button>
+                        <button class="btn btn-info btn-xs"><i class="icon-pencil"> 显示</i></button>
                     </a>
                     {/if}
                 </td>
