@@ -64,6 +64,9 @@ class User extends Base
         if (!$role_id && !$password && !$role_id) {
             return json_return(101);
         }
+        if ($this->token()) {
+            return json_return(200);
+        }
         $data = [
             'name' => $name, // 用户账号
             'password' => md5(sha1(md5($password))), // 用户密码
@@ -133,7 +136,9 @@ class User extends Base
         if (!$name && !$role_id) {
             return json_return(101);
         }
-
+        if ($this->token()) {
+            return json_return(200);
+        }
         $data = [
             'id' => $id, // 用户id
             'name' => $name, // 用户账号
